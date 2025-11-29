@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom"
 import { useState, useEffect, useRef } from "react"
 import "../styles/Home.css"
 
@@ -17,6 +16,16 @@ export default function Home() {
       }
       return newSet
     })
+  }
+
+  // PDF 다운로드
+  const handleDownloadPDF = () => {
+    const link = document.createElement('a')
+    link.href = '/portfolio.pdf'  // asset 폴더의 PDF 파일 경로
+    link.download = 'portfolio.pdf'
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
   }
 
   useEffect(() => {
@@ -46,11 +55,23 @@ export default function Home() {
 
   return (
     <div className="portfolio-container">
+      {/* Header with Simple Introduction */}
       <header className="portfolio-header fade-in visible">
-        <h1 className="main-title" style={{ textAlign: 'left' }}>주사랑</h1>
-        <p className="main-subtitle" style={{ textAlign: 'left' }}>QA Engineer</p>
+        <div className="header-intro">
+          <div className="intro-text">
+            <p className="intro-line">안녕하세요!</p>
+            <p className="intro-line">소프트웨어 품질 향상을 꿈꾸는</p>
+            <p className="intro-line highlight-text">QA Engineer</p>
+          </div>
+        </div>
+        <button onClick={handleDownloadPDF} className="pdf-circle-btn">
+          <span className="pdf-icon">📄</span>
+        </button>
+
+        
       </header>
 
+      {/* 인적사항 */}
       <section 
         className={`content-section fade-in ${visibleSections.has('0') ? 'visible' : ''}`}
         data-index="0"
@@ -58,7 +79,7 @@ export default function Home() {
       >
         <h2 className="section-title">
           <span className="title-icon">👤</span>
-          개인정보
+          인적사항
         </h2>
         
         <div className="info-grid">
@@ -187,6 +208,7 @@ export default function Home() {
         </div>
       </section>
 
+      {/* 프로젝트 */}
       <section 
         className={`content-section fade-in ${visibleSections.has('1') ? 'visible' : ''}`}
         data-index="1"
@@ -197,6 +219,7 @@ export default function Home() {
           프로젝트
         </h2>
 
+        {/* 프로젝트 1 */}
         <div className="project-detail-card">
           <div 
             className="project-header clickable" 
@@ -274,14 +297,14 @@ export default function Home() {
                   <li>이메일 Authentication 구현</li>
                   <li>챌린지 기능 CRUD 구현</li>
                   <li>Firebase Cloud messaging</li>
-                  <li>Firebase Cloud Function 으로 Delete 관리</li>
+                  <li>Firebase Cloud Function 으로 Account Delete 관리</li>
                 </ul>
 
-                <h4 className="content-subtitle">노력한 점</h4>
+                <h4 className="content-subtitle">결론</h4>
                 <div className="problem-solution">
                   <div className="problem-box">
-                    <strong>시도:</strong>요구사항 작성 및 총체적 취합<br></br>
-                     테스트 시나리오 및 테스트 케이스 작성<br></br>
+                    <strong>시도:</strong> 요구사항 작성 및 총체적 취합<br />
+                    테스트 시나리오 및 테스트 케이스 작성<br />
                     ui/ux 통일성을 위한 가이드라인 작성
                   </div>
                   <div className="solution-box">
@@ -297,6 +320,7 @@ export default function Home() {
           )}
         </div>
 
+        {/* 프로젝트 2 */}
         <div className="project-detail-card">
           <div 
             className="project-header clickable" 
@@ -345,8 +369,7 @@ export default function Home() {
                     <a href="https://github.com/parkjto/eolmabeni_Front" target="_blank" rel="noopener noreferrer" className="github-link-inline">
                       https://github.com/parkjto/eolmabeni_Front
                     </a>
-                  </div>
-                  <div className="meta-value">
+                    <br />
                     <a href="https://github.com/parkjto/eolmabeni_Back" target="_blank" rel="noopener noreferrer" className="github-link-inline">
                       https://github.com/parkjto/eolmabeni_Back
                     </a>
@@ -379,13 +402,13 @@ export default function Home() {
                   <li>Flutter 앱과 REST API 연동</li>
                 </ul>
 
-                <h4 className="content-subtitle">노력한 점</h4>
+                <h4 className="content-subtitle">결론</h4>
                 <div className="problem-solution">
                   <div className="problem-box">
-                    <strong>시도:</strong> 요구사항 기능 분석 및 작성 <br></br>
-                    백엔드 로직 개발 <br></br>
-                    단위테스트 진행 <br></br>
-                    협업 및 품질 관리 <br></br>
+                    <strong>시도:</strong> 요구사항 기능 분석 및 작성<br />
+                    백엔드 로직 개발<br />
+                    단위테스트 진행<br />
+                    협업 및 품질 관리
                   </div>
                   <div className="solution-box">
                     <strong>느낀 점:</strong> 백엔드 개발을 담당하며 개발 초기부터 품질을 내재화하는 경험을 했습니다.
@@ -399,9 +422,9 @@ export default function Home() {
             </div>
           )}
         </div>
-      
 
-      <div className="project-detail-card">
+        {/* 프로젝트 3 */}
+        <div className="project-detail-card">
           <div 
             className="project-header clickable" 
             onClick={() => toggleProject('usedtrade')}
@@ -447,8 +470,8 @@ export default function Home() {
                 <div className="meta-item">
                   <div className="meta-label">GitHub</div>
                   <div className="meta-value">
-                    <a href="https://github.com/yourusername/usedtrade" target="_blank" rel="noopener noreferrer" className="github-link-inline">
-                      github.com/yourusername/usedtrade →
+                    <a href="https://github.com/taemin01/refresh_market" target="_blank" rel="noopener noreferrer" className="github-link-inline">
+                      https://github.com/taemin01/refresh_market
                     </a>
                   </div>
                 </div>
@@ -477,12 +500,12 @@ export default function Home() {
                   <li>상품 북마크 기능 개발</li>
                 </ul>
 
-                <h4 className="content-subtitle">노력한 점</h4>
+                <h4 className="content-subtitle">결론</h4>
                 <div className="problem-solution">
                   <div className="problem-box">
-                    <strong>시도:</strong> 요구사항 정의 작성 <br></br>
-                    데이터베이스 설계 및 보수 <br></br>
-                    Postman을 이용한 API 테스트 <br></br>
+                    <strong>시도:</strong> 요구사항 정의 작성<br />
+                    데이터베이스 설계 및 보수<br />
+                    Postman을 이용한 API 테스트
                   </div>
                   <div className="solution-box">
                     <strong>느낀 점:</strong> 중고거래 플랫폼 구축 과정에서 안전성 확보를 위한 QA 마인드셋을 확립할 수 있었습니다.
@@ -496,7 +519,7 @@ export default function Home() {
             </div>
           )}
         </div>
-        </section>
+      </section>
 
       {/* Footer */}
       <footer className="portfolio-footer">

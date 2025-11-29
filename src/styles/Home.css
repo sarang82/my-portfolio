@@ -1,5 +1,3 @@
-/* Notion-style Portfolio CSS - Enhanced */
-
 * {
   margin: 0;
   padding: 0;
@@ -13,20 +11,24 @@ body {
   line-height: 1.6;
 }
 
-/* Container */
 .portfolio-container {
   max-width: 900px;
   margin: 0 auto;
   padding: 60px 40px;
 }
 
-/* Header */
 .portfolio-header {
-  text-align: center;
-  margin-bottom: 80px;
-  padding-bottom: 40px;
-  border-bottom: 1px solid #e9e9e7;
   position: relative;
+  margin-bottom: 80px;
+  padding: 60px 40px 40px;
+  border-bottom: 1px solid #e9e9e7;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.header-intro {
+  flex: 1;
 }
 
 .portfolio-header::after {
@@ -55,8 +57,9 @@ body {
   font-size: 3rem;
   font-weight: 700;
   color: #37352f;
-  margin-bottom: 12px;
+  margin-bottom: 24px;
   animation: fadeInDown 0.6s ease;
+  text-align: left;
 }
 
 @keyframes fadeInDown {
@@ -70,11 +73,21 @@ body {
   }
 }
 
-.main-subtitle {
+.intro-text {
+  animation: fadeInUp 0.6s ease 0.3s both;
+}
+
+.intro-line {
   font-size: 1.3rem;
   color: #787774;
-  font-weight: 400;
-  animation: fadeInUp 0.6s ease 0.2s both;
+  line-height: 1.8;
+  margin: 0;
+}
+
+.intro-line.highlight-text {
+  color: #2383e2;
+  font-weight: 600;
+  margin-top: 8px;
 }
 
 @keyframes fadeInUp {
@@ -88,7 +101,71 @@ body {
   }
 }
 
-/* Section */
+.pdf-circle-btn {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: #4da6ff;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(35, 131, 226, 0.3);
+  position: relative;
+  animation: fadeInUp 0.6s ease 0.5s both;
+}
+
+.pdf-circle-btn:hover {
+  background: #1a6ec7;
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(35, 131, 226, 0.4);
+}
+
+.pdf-circle-btn:active {
+  transform: translateY(-2px);
+}
+
+.pdf-circle-btn .pdf-icon {
+  font-size: 1.8rem;
+}
+
+.pdf-circle-btn::after {
+  content: '포트폴리오 PDF 다운로드';
+  position: absolute;
+  bottom: -32px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.75rem;
+  color: #787774;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.pdf-circle-btn:hover::after {
+  opacity: 1;
+}
+
+@media print {
+  * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  body {
+    overflow: visible !important;
+  }
+
+  .scroll-container { 
+    height: auto !important;
+    overflow: visible !important;
+  }
+}
+
+
 .content-section {
   margin-bottom: 80px;
 }
@@ -139,7 +216,6 @@ body {
   50% { transform: translateY(-5px); }
 }
 
-/* Info Grid */
 .info-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -219,7 +295,6 @@ body {
   color: #1a6ec7;
 }
 
-/* Subsection */
 .subsection {
   margin-top: 40px;
 }
@@ -248,7 +323,6 @@ body {
   width: 100%;
 }
 
-/* Timeline */
 .timeline-item {
   display: flex;
   gap: 20px;
@@ -302,7 +376,6 @@ body {
   color: #787774;
 }
 
-/* Certification List */
 .cert-list {
   list-style: none;
   padding: 0;
@@ -330,7 +403,6 @@ body {
   font-size: 1.1rem;
 }
 
-/* Tech Stack Grid */
 .tech-stack-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
@@ -429,7 +501,6 @@ body {
   }
 }
 
-/* Project Detail Card */
 .project-detail-card {
   background: #ffffff;
   border: 1px solid #e9e9e7;
@@ -577,7 +648,6 @@ body {
   margin-left: 8px;
 }
 
-/* Project Meta Grid */
 .project-meta-grid {
   display: grid;
   gap: 20px;
@@ -637,7 +707,6 @@ body {
   box-shadow: 0 4px 8px rgba(35, 131, 226, 0.3);
 }
 
-/* Project Content */
 .project-content {
   margin-top: 32px;
 }
@@ -693,7 +762,6 @@ body {
   transform: translateX(4px);
 }
 
-/* Problem Solution */
 .problem-solution {
   margin-top: 16px;
   display: flex;
@@ -740,7 +808,6 @@ body {
   color: #37352f;
 }
 
-/* Footer */
 .portfolio-footer {
   margin-top: 100px;
   padding-top: 40px;
@@ -784,7 +851,6 @@ body {
   color: #1a6ec7;
 }
 
-/* Scroll Animation */
 .fade-in {
   opacity: 0;
   transform: translateY(30px);
@@ -796,17 +862,27 @@ body {
   transform: translateY(0);
 }
 
-/* Responsive */
 @media (max-width: 768px) {
   .portfolio-container {
     padding: 40px 24px;
+  }
+
+  .portfolio-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+    padding: 40px 20px 40px;
+  }
+
+  .pdf-circle-btn {
+    align-self: flex-end;
   }
 
   .main-title {
     font-size: 2.25rem;
   }
 
-  .main-subtitle {
+  .intro-line {
     font-size: 1.1rem;
   }
 
@@ -865,8 +941,25 @@ body {
     padding: 30px 16px;
   }
 
+  .portfolio-header {
+    padding: 30px 16px 30px;
+  }
+
   .main-title {
     font-size: 1.875rem;
+  }
+
+  .intro-line {
+    font-size: 1rem;
+  }
+
+  .pdf-circle-btn {
+    width: 56px;
+    height: 56px;
+  }
+
+  .pdf-circle-btn .pdf-icon {
+    font-size: 1.5rem;
   }
 
   .section-title {
@@ -887,7 +980,6 @@ body {
   text-decoration: underline;
 }
 
-/* Project Meta Grid */
 .project-meta-grid {
   display: grid;
   gap: 20px;
@@ -935,7 +1027,6 @@ body {
   background: #d3d1cb;
 }
 
-/* Project Content */
 .project-content {
   margin-top: 32px;
 }
@@ -978,7 +1069,6 @@ body {
   font-weight: bold;
 }
 
-/* Problem Solution */
 .problem-solution {
   margin-top: 16px;
   display: flex;
@@ -1011,7 +1101,6 @@ body {
   color: #37352f;
 }
 
-/* Footer */
 .portfolio-footer {
   margin-top: 100px;
   padding-top: 40px;
@@ -1039,7 +1128,6 @@ body {
   color: #1a6ec7;
 }
 
-/* Scroll Animation */
 .fade-in {
   opacity: 0;
   transform: translateY(30px);
@@ -1051,7 +1139,6 @@ body {
   transform: translateY(0);
 }
 
-/* Responsive */
 @media (max-width: 768px) {
   .portfolio-container {
     padding: 40px 24px;
