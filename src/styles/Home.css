@@ -14,7 +14,7 @@ body {
 .portfolio-container {
   max-width: 900px;
   margin: 0 auto;
-  padding: 60px 40px;
+  padding: 10px 40px;
 }
 
 .portfolio-header {
@@ -538,7 +538,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 28px 32px;
+  padding: 10px 32px;
   cursor: pointer;
   user-select: none;
   transition: all 0.2s ease;

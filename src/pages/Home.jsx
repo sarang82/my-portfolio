@@ -55,7 +55,6 @@ export default function Home() {
 
   return (
     <div className="portfolio-container">
-      {/* Header with Simple Introduction */}
       <header className="portfolio-header fade-in visible">
         <div className="header-intro">
           <div className="intro-text">
