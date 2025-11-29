@@ -139,7 +139,7 @@ export default function Home() {
               <div className="tech-name">Java</div>
               <div className="tech-level">
                 <div className="level-bar">
-                  <div className="level-fill" style={{width: '60%'}}></div>
+                  <div className="level-fill" style={{width: '67%'}}></div>
                 </div>
               </div>
             </div>
@@ -150,6 +150,16 @@ export default function Home() {
               <div className="tech-level">
                 <div className="level-bar">
                   <div className="level-fill" style={{width: '60%'}}></div>
+                </div>
+              </div>
+            </div>
+
+            <div className="tech-card">
+              <div className="tech-icon">📈</div>
+              <div className="tech-name">Python</div>
+              <div className="tech-level">
+                <div className="level-bar">
+                  <div className="level-fill" style={{width: '65%'}}></div>
                 </div>
               </div>
             </div>
